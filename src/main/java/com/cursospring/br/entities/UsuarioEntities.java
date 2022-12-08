@@ -1,16 +1,19 @@
 package com.cursospring.br.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "tb_usuario")
 public class UsuarioEntities implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -22,6 +25,9 @@ public class UsuarioEntities implements Serializable{
 	private String email;
 	private String telefone;
 	private String senha;
+	
+	@OneToMany(mappedBy = "cliente")
+	private List<Pedido> ordens = new ArrayList<>();
 	
 	public UsuarioEntities() {
 	}
@@ -73,6 +79,10 @@ public class UsuarioEntities implements Serializable{
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	
+	public List<Pedido> getOrdens() {
+		return ordens;
 	}
 
 	@Override
