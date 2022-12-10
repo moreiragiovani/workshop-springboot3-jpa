@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,8 +28,9 @@ public class UsuarioEntities implements Serializable{
 	private String telefone;
 	private String senha;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "cliente")
-	private List<Pedido> ordens = new ArrayList<>();
+	private List<PedidoEntitie> ordens = new ArrayList<>();
 	
 	public UsuarioEntities() {
 	}
@@ -81,7 +84,7 @@ public class UsuarioEntities implements Serializable{
 		this.senha = senha;
 	}
 	
-	public List<Pedido> getOrdens() {
+	public List<PedidoEntitie> getOrdens() {
 		return ordens;
 	}
 

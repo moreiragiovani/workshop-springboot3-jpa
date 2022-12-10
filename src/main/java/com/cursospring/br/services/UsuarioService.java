@@ -24,6 +24,9 @@ public class UsuarioService {
 		return userObj.get();
 	}
 	
+	public void createUsuario(UsuarioEntities user) {
+		repository.save(user);
+	}
 
 	
 }

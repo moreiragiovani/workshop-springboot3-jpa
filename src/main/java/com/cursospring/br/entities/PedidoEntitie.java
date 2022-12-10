@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,23 +16,25 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_pedido")
-public class Pedido implements Serializable {
+public class PedidoEntitie implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
 	private Instant momento;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_cliente")
 	private UsuarioEntities cliente;
 	
-	public Pedido () {
+	public PedidoEntitie () {
 	}
 
-	public Pedido(Long id, Instant momento, UsuarioEntities cliente) {
+	public PedidoEntitie(Long id, Instant momento, UsuarioEntities cliente) {
 		super();
 		this.id = id;
 		this.momento = momento;
@@ -74,7 +78,7 @@ public class Pedido implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Pedido other = (Pedido) obj;
+		PedidoEntitie other = (PedidoEntitie) obj;
 		return Objects.equals(id, other.id);
 	}
 	

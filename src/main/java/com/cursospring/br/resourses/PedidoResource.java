@@ -12,32 +12,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cursospring.br.entities.UsuarioEntities;
-import com.cursospring.br.services.UsuarioService;
+import com.cursospring.br.entities.PedidoEntitie;
+import com.cursospring.br.services.PedidoService;
 
 @RestController
-@RequestMapping(value = "/usuario")
-public class UserResource {
+@RequestMapping(value = "/pedido")
+public class PedidoResource {
 	
 	@Autowired
-	private UsuarioService service;
+	private PedidoService service;
 	
 	@GetMapping
-	public ResponseEntity<List<UsuarioEntities>> findAll(){
-		List<UsuarioEntities> listaUsuario = service.findAll();
+	public ResponseEntity<List<PedidoEntitie>> findAll(){
+		List<PedidoEntitie> listaUsuario = service.findAll();
 		return ResponseEntity.ok().body(listaUsuario);
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<UsuarioEntities> findById(@PathVariable Long id){
-		UsuarioEntities user = service.findById(id);
+	public ResponseEntity<PedidoEntitie> findById(@PathVariable Long id){
+		PedidoEntitie user = service.findById(id);
 		return ResponseEntity.ok().body(user);
 	}
 	
 	@PostMapping
-	public ResponseEntity<UsuarioEntities> createUsuario(@RequestBody UsuarioEntities user){
+	public ResponseEntity<PedidoEntitie> createUsuario(@RequestBody PedidoEntitie user){
 		service.createUsuario(user);
-		return new ResponseEntity<UsuarioEntities>(HttpStatus.CREATED);
+		return new ResponseEntity<PedidoEntitie>(HttpStatus.CREATED);
 				
 	}
 	
