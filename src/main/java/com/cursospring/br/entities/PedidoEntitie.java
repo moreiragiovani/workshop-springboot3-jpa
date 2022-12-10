@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
+import com.cursospring.br.enums.PedidoStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Entity;
@@ -27,6 +28,8 @@ public class PedidoEntitie implements Serializable {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
 	private Instant momento;
 	
+	private Integer pedidoStatus;
+	
 	@ManyToOne
 	@JoinColumn(name = "id_cliente")
 	private UsuarioEntities cliente;
@@ -34,10 +37,11 @@ public class PedidoEntitie implements Serializable {
 	public PedidoEntitie () {
 	}
 
-	public PedidoEntitie(Long id, Instant momento, UsuarioEntities cliente) {
+	public PedidoEntitie(Long id, Instant momento, PedidoStatus pedidoStatus, UsuarioEntities cliente) {
 		super();
 		this.id = id;
 		this.momento = momento;
+		setPedidoStatus(pedidoStatus);
 		this.cliente = cliente;
 	}
 
@@ -64,6 +68,16 @@ public class PedidoEntitie implements Serializable {
 	public void setCliente(UsuarioEntities cliente) {
 		this.cliente = cliente;
 	}
+	
+	public PedidoStatus getPedidoStatus() {
+		return PedidoStatus.valueOf(pedidoStatus);
+	}
+	
+	public void setPedidoStatus(PedidoStatus pedidoStatus) {
+		if(pedidoStatus != null) {
+			this.pedidoStatus = pedidoStatus.getCode();			
+		}
+	}
 
 	@Override
 	public int hashCode() {
@@ -81,6 +95,7 @@ public class PedidoEntitie implements Serializable {
 		PedidoEntitie other = (PedidoEntitie) obj;
 		return Objects.equals(id, other.id);
 	}
+
 	
 	
 }
