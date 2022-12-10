@@ -13,7 +13,7 @@ import com.cursospring.br.entities.ProdutoEntitie;
 import com.cursospring.br.services.ProdutoService;
 
 @RestController
-@RequestMapping(value = "/pedido")
+@RequestMapping(value = "/produto")
 public class ProdutoResource {
 	
 	@Autowired
