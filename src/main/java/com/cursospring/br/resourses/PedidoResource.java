@@ -16,7 +16,7 @@ import com.cursospring.br.entities.PedidoEntitie;
 import com.cursospring.br.services.PedidoService;
 
 @RestController
-@RequestMapping(value = "/pedido")
+@RequestMapping(value = "/pedidos")
 public class PedidoResource {
 	
 	@Autowired

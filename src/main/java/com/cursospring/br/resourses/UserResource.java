@@ -16,7 +16,7 @@ import com.cursospring.br.entities.UsuarioEntities;
 import com.cursospring.br.services.UsuarioService;
 
 @RestController
-@RequestMapping(value = "/usuario")
+@RequestMapping(value = "/usuarios")
 public class UserResource {
 	
 	@Autowired

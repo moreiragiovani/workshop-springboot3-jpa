@@ -1,12 +1,17 @@
 package com.cursospring.br.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,6 +24,10 @@ public class CategoriaEntitie implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id; 
 	private String nome;
+	
+	@JsonIgnore
+	@ManyToMany(mappedBy = "categorias")
+	private Set<ProdutoEntitie> produtos = new HashSet<>();
 	
 	public CategoriaEntitie() {
 	}
@@ -44,6 +53,10 @@ public class CategoriaEntitie implements Serializable{
 		this.nome = nome;
 	}
 
+	public Set<ProdutoEntitie> getProdutos() {
+		return produtos;
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
