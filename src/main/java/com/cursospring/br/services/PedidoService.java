@@ -24,9 +24,5 @@ public class PedidoService {
 		return userObj.get();
 	}
 	
-	public void createUsuario(PedidoEntitie user) {
-		repository.save(user);
-	}
-
 	
 }

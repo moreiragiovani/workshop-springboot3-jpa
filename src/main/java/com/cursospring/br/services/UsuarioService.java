@@ -23,10 +23,6 @@ public class UsuarioService {
 		Optional<UsuarioEntities> userObj = repository.findById(id);
 		return userObj.get();
 	}
-	
-	public void createUsuario(UsuarioEntities user) {
-		repository.save(user);
-	}
 
 	
 }

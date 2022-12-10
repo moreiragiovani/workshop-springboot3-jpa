@@ -34,11 +34,5 @@ public class UserResource {
 		return ResponseEntity.ok().body(user);
 	}
 	
-	@PostMapping
-	public ResponseEntity<UsuarioEntities> createUsuario(@RequestBody UsuarioEntities user){
-		service.createUsuario(user);
-		return new ResponseEntity<UsuarioEntities>(HttpStatus.CREATED);
-				
-	}
 	
 }
