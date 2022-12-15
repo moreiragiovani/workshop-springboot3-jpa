@@ -11,7 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Embeddable
-public class ItemProdutoPk implements Serializable{
+public class ItemPedidoPk implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -21,7 +21,7 @@ public class ItemProdutoPk implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name = "produto_id")
-	private ProdutoEntitie produtopk;
+	private ProdutoEntitie produtoPk;
 	
 	
 	public PedidoEntitie getPedidoPk() {
@@ -31,14 +31,14 @@ public class ItemProdutoPk implements Serializable{
 		this.pedidoPk = pedidoPk;
 	}
 	public ProdutoEntitie getProdutopk() {
-		return produtopk;
+		return produtoPk;
 	}
-	public void setProdutopk(ProdutoEntitie produtopk) {
-		this.produtopk = produtopk;
+	public void setProdutopk(ProdutoEntitie produtoPk) {
+		this.produtoPk = produtoPk;
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(pedidoPk, produtopk);
+		return Objects.hash(pedidoPk, produtoPk);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -48,7 +48,7 @@ public class ItemProdutoPk implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ItemProdutoPk other = (ItemProdutoPk) obj;
-		return Objects.equals(pedidoPk, other.pedidoPk) && Objects.equals(produtopk, other.produtopk);
+		ItemPedidoPk other = (ItemPedidoPk) obj;
+		return Objects.equals(pedidoPk, other.pedidoPk) && Objects.equals(produtoPk, other.produtoPk);
 	}
 }

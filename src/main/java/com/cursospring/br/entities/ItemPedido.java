@@ -3,7 +3,7 @@ package com.cursospring.br.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
-import com.cursospring.br.entities.pk.ItemProdutoPk;
+import com.cursospring.br.entities.pk.ItemPedidoPk;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.EmbeddedId;
@@ -17,7 +17,7 @@ public class ItemPedido implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@EmbeddedId
-	private ItemProdutoPk id = new ItemProdutoPk();
+	private ItemPedidoPk id = new ItemPedidoPk();
 	
 	private Integer quantidade;
 	private Double preco;
