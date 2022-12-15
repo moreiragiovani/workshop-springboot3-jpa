@@ -58,9 +58,6 @@ public class PedidoEntitie implements Serializable {
 		this.cliente = cliente;
 	}
 
-	public Set<ItemPedido> getIntemPedidos(){
-		return itemPedidos;
-	}
 	
 	public Long getId() {
 		return id;
@@ -86,22 +83,35 @@ public class PedidoEntitie implements Serializable {
 		this.cliente = cliente;
 	}
 	
+	public Pagamento getPagamento() {
+		return pagamento;
+	}
+	
+	public void setPagamento(Pagamento pagamento) {
+		this.pagamento = pagamento;
+	}
+	
 	public PedidoStatus getPedidoStatus() {
 		return PedidoStatus.valueOf(pedidoStatus);
 	}	
 	
-	public Pagamento getPagamento() {
-		return pagamento;
-	}
-
-	public void setPagamento(Pagamento pagamento) {
-		this.pagamento = pagamento;
-	}
 
 	public void setPedidoStatus(PedidoStatus pedidoStatus) {
 		if(pedidoStatus != null) {
 			this.pedidoStatus = pedidoStatus.getCode();			
 		}
+	}
+	
+	public Set<ItemPedido> getIntemPedidos(){
+		return itemPedidos;
+	}
+	
+	public Double getTotal() {
+		Double total = 0.0;
+		for(ItemPedido x: itemPedidos) {
+			total += x.getSubTotal();
+		}
+		return total;
 	}
 
 	@Override

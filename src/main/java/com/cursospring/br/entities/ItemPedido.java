@@ -33,6 +33,26 @@ public class ItemPedido implements Serializable{
 		this.preco = preco;
 	}
 	
+	public Integer getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(Integer quantidade) {
+		this.quantidade = quantidade;
+	}
+
+	public Double getPreco() {
+		return preco;
+	}
+
+	public void setPreco(Double preco) {
+		this.preco = preco;
+	}
+	
+	public Double getSubTotal() {
+		return quantidade * preco;
+	}
+	
 	@JsonIgnore
 	public PedidoEntitie getPedido() {
 		return id.getPedidoPk();
@@ -50,21 +70,6 @@ public class ItemPedido implements Serializable{
 		id.setProdutopk(produto);
 	}
 	
-	public Integer getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(Integer quantidade) {
-		this.quantidade = quantidade;
-	}
-
-	public Double getPreco() {
-		return preco;
-	}
-
-	public void setPreco(Double preco) {
-		this.preco = preco;
-	}
 
 	@Override
 	public int hashCode() {
