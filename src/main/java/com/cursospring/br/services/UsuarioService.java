@@ -24,5 +24,25 @@ public class UsuarioService {
 		return userObj.get();
 	}
 
+	public UsuarioEntities insertUsuario(UsuarioEntities user) {
+		return repository.save(user);
+	}
+	
+	public void deleteUsuario(Long id) {
+		repository.deleteById(id);
+	}
+	
+	public UsuarioEntities updateUsuario(Long id, UsuarioEntities user) {
+		UsuarioEntities usuario = repository.getReferenceById(id);
+		updateUser(usuario, user);
+		return repository.save(usuario);
+	}
+
+	private void updateUser(UsuarioEntities usuario, UsuarioEntities user) {
+		usuario.setNome(user.getNome());
+		usuario.setEmail(user.getEmail());
+		usuario.setTelefone(user.getTelefone());
+		
+	}
 	
 }
